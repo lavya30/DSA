@@ -15,15 +15,18 @@ public:
 
         ListNode* current = head;
         string s = "";
+        int result = 0;
 
         while(current!=nullptr){
-            s+= to_string(current->val);
+            // s+= to_string(current->val);
+            result = result*2+current->val;
+
             current = current -> next;
 
 
         }
 
-        int result = stoi(s,nullptr,2);
+        // result = stoi(s,nullptr,2);
         return result;
         
     }
