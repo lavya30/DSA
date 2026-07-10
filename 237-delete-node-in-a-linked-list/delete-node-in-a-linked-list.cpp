@@ -11,16 +11,20 @@ public:
     void deleteNode(ListNode* node) {
 
         ListNode* current = node;
-        ListNode* prev = node;
+        // ListNode* prev = node;
 
-        while(current -> next!=nullptr){
-            prev =  current;
-            current -> val = current -> next -> val;
-            current = current -> next;
-        }
-        prev -> next = nullptr;
-        delete current;
+        // while(current -> next!=nullptr){
+        //     prev =  current;
+        //     current -> val = current -> next -> val;
+        //     current = current -> next;
+        // }
+        // prev -> next = nullptr;
+        // delete current;
 
+        current->val =  current -> next ->val;
+        ListNode* del =  current -> next;
+        current -> next = current->next->next;
+        delete del;
         
     }
 };
