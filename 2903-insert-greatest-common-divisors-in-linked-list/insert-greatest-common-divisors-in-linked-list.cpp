@@ -17,9 +17,9 @@ public:
         while(prev->next!=nullptr){
             int val1=prev->val;
             int val2=current->val;
-            int maxim =  max(val1,val2);
+            int mini =  min(val1,val2);
             int gcd = 0;
-            for(int i = maxim;i>0;i--){
+            for(int i = mini;i>0;i--){
                 if(val1%i==0 && val2%i==0){
                     gcd = max(gcd,i);
                 }
