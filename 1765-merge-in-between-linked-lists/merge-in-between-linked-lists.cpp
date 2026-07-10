@@ -19,6 +19,7 @@ public:
             count++;
             if(count == b){
                 last = current->next;
+                current->next = nullptr;
                 break;
             }
             current = current->next;
@@ -27,14 +28,7 @@ public:
        
         current= list1;
 
-        while(current!=nullptr&&current->next!=nullptr){
-            count++;
-           
-            if(count == b){
-                current->next = nullptr;
-            }
-            current = current->next;
-        }
+        
         count =-1;
 
         current = list1;
