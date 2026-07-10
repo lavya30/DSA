@@ -22,6 +22,7 @@ public:
             for(int i = mini;i>0;i--){
                 if(val1%i==0 && val2%i==0){
                     gcd = max(gcd,i);
+                    break;
                 }
 
             }
