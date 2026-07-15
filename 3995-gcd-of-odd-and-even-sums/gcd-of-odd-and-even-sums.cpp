@@ -1,19 +1,12 @@
 class Solution {
 public:
     int gcdOfOddEvenSums(int n) {
-        int sumOdd = 0;
-        int sumEven = 0;
+        int sumOdd = n*n;
+        int sumEven = n*(n+1);
 
-        for(int i=1;i<n+n;i++){
-            if(i%2==0)
-                sumEven+=i;
-            
-            else
-                sumOdd+=i;
             
 
-        }
-
+        
         return gcd(sumEven,sumOdd);
         
     }
