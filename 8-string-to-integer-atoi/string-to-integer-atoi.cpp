@@ -11,16 +11,16 @@ public:
             if(i == size(s))
                 return 0;
         }
-        if(s[j]=='-'){
+        if(s[i]=='-'){
 
             i++;
-            j++;
+            
             negative  =  true;
         }
-        else if(i<size(s) && s[j]=='+'){
+        else if(i<size(s) && s[i]=='+'){
             negative = false;
             i++;
-            j++;
+            
         }
         long long res = 0;
         for(int k = i;i<size(s);i++){
