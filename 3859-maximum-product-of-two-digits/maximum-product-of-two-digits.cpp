@@ -2,13 +2,21 @@ class Solution {
 public:
     int maxProduct(int n) {
         string num =  to_string(n);
-        vector<int>store;
+        
+        int first = 0;
+        int sec = 0;
 
         for(int i = 0;i<size(num);i++){
             int number =  num[i] - '0';
-            store.push_back(number);
+            if(number>=first){
+                sec =  first;
+                first = number;
+            }
+            else if(number>sec){
+                sec = number;
+            }
+            
         }
-        sort(store.begin(),store.end(),greater<>());
-        return store[0]*store[1];
+        return first*sec;
     }
 };
