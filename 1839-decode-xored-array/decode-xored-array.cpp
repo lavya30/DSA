@@ -1,11 +1,11 @@
 class Solution {
 public:
     vector<int> decode(vector<int>& encoded, int first) {
-        vector<int>ans;
-        ans.push_back(first);
+        vector<int>ans(encoded.size()+1);
+        ans[0]= first;
         for(int i = 0;i<encoded.size();i++){
             auto val =  ans[i] ^ encoded[i];
-            ans.push_back(val);
+            ans[i+1]=val;
         }
         return ans;
 
