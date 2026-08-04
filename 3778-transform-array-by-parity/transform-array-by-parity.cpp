@@ -2,15 +2,19 @@ class Solution {
 public:
     vector<int> transformArray(vector<int>& nums) {
         int n = nums.size();
+        vector<int>ans;
+        int even = 0;
+        int odd = 0;
         for(int i= 0;i<n;i++){
             if(nums[i]%2==0)
-                nums.push_back(0);
+                even++;
             else
-                nums.push_back(1);
-        
-        }
-        nums.erase(nums.begin(),nums.begin()+n);
-        sort(nums.begin(),nums.end());
-        return nums;
+                odd++;
+            }
+        ans.insert(ans.begin(),even,0);
+        ans.insert(ans.end(),odd,1);
+        return ans;
     }
-};
+
+       
+    };
