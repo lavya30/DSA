@@ -22,8 +22,9 @@ private:
     }
 public:
     int countDistinctIntegers(vector<int>& nums) {
-        set<int>ans(nums.begin(),nums.end());
+        set<int>ans;
         for(int i= 0;i<nums.size();i++){
+            ans.insert(nums[i]);
             int val = reverseNum(nums[i]);
             ans.insert(val);
         }
