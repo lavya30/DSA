@@ -11,7 +11,7 @@ public:
             if(skill[low]+skill[high] != target){
                 return -1;
             }
-            ans+= skill[low]*skill[high];
+            ans+= (long long)skill[low]*skill[high];
             low++;
             high--;
     }
