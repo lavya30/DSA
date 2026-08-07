@@ -2,7 +2,7 @@ class Solution {
 public:
     int passwordStrength(string password) {
         int ans = 0;
-        set<int>temp;
+        unordered_set<int>temp;
         for(int i =0;i<size(password);i++){
             int ascii = int(password[i]);
             
