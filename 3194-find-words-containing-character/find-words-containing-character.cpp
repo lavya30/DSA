@@ -4,9 +4,16 @@ public:
         vector<int>ans;
         for(int i=0;i<words.size();i++){
             string s = words[i];
-            if(s.find(x)!=string::npos){
-                ans.push_back(i);
+
+            for(auto it:s){
+                if(it == x){
+                    ans.push_back(i);
+                    break;
+                }
             }
+            // if(s.find(x)!=string::npos){
+            //     ans.push_back(i);
+            // }
         }
         return ans;
         
