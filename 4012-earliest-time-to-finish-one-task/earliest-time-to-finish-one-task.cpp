@@ -2,13 +2,16 @@ class Solution {
 public:
     int earliestTime(vector<vector<int>>& tasks) {
         int mini = INT_MAX;
-        for(int i = 0 ; i<tasks.size();i++){
-            int sum = 0;
-            for(int j  =0;j<tasks[0].size();j++){
-                sum+=tasks[i][j];
-            }
-            mini =  min(mini,sum);
-        }
+        for(int i = 0;i<tasks.size();i++){
+            mini = min(mini,tasks[i][0]+tasks[i][1]);
+        }   
+        // for(int i = 0 ; i<tasks.size();i++){
+        //     int sum = 0;
+        //     for(int j  =0;j<tasks[0].size();j++){
+        //         sum+=tasks[i][j];
+        //     }
+        //     mini =  min(mini,sum);
+        // }
         return mini;
     }
 };
