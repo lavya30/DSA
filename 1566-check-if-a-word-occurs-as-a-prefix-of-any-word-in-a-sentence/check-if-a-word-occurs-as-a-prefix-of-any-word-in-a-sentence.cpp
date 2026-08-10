@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int isPrefixOfWord(string sentence, string searchWord) {
+
+        int counter = 1;
+        stringstream stream(sentence);
+        string word;
+
+        while(stream >> word){
+            if(word.find(searchWord) == 0){
+                return counter;
+            }
+            counter++;
+        }
+        return -1;
+    }
+};
