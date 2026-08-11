@@ -10,13 +10,21 @@ public:
         else
             break;
      }
-     while(true){
-        if(find(nums.begin(),nums.end(),sums) == nums.end()){
-            break;
-        }
-        else
-            sums++;
-     }
+    unordered_set<int>hash(nums.begin(),nums.end());
+    while(hash.count(sums)){
+        sums++;
+    }
+    
+    
+
+
+    //  while(true){
+    //     if(find(nums.begin(),nums.end(),sums) == nums.end()){
+    //         break;
+    //     }
+    //     else
+    //         sums++;
+    //  }
         return sums;
     }
 };
