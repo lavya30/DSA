@@ -9,59 +9,39 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-
-        // vector<ListNode*>vec;
-        // ListNode* first =  headA;
-        // ListNode* second = headB;
-
-        // while(first!=nullptr){
-        //     vec.push_back(first);
-        //     first =  first->next;
-
-        // }
-        // while(second!=nullptr){
-        //     if(find(vec.begin(),vec.end(),second)!=vec.end()){
-        //         return second;
-                
-        //     }
-        //     second = second->next;
-        // }
-        // return nullptr;
-        ListNode* first =  headA;
+        
+        ListNode* first= headA;
         ListNode* second = headB;
-        int counta = 0;
-        int countb = 0;
 
-        while(first!=nullptr){
-            counta++;
-            first = first->next;
+        int a = 0;
+        int b = 0;
+
+        while(first!=nullptr && first ->next != nullptr){
+            a++;
+            first = first ->next;
         }
-
-        while(second!=nullptr){
-            countb++;
+        while(second !=nullptr  && second->next!=nullptr){
+            b++;
             second = second->next;
         }
-        first = headA;
+        first= headA;
         second = headB;
+        while(b>a){
+            second = second ->next;
+            b--;
 
-        while(counta>countb){
+        }
+        while(a>b){
             first = first->next;
-            counta--;
-
+            a--;
         }
-        while(countb>counta){
-            second = second->next;
-            countb--;
-
-        }
-
 
         while(first!=second){
             first = first->next;
-            second = second->next;
+            second = second ->next;
         }
         return first;
-       
         
+
     }
 };
