@@ -11,44 +11,17 @@
 class Solution {
 public:
     ListNode* insertGreatestCommonDivisors(ListNode* head) {
-        ListNode* current = head->next;
-        ListNode* prev = head;
 
-
-        while(current != nullptr){ 
+        ListNode* current = head;
+        while(nullptr != current && nullptr != current->next){
+            int value = gcd(current->val , current->next->val);
+            ListNode* newNode = new ListNode(value);
+           
+            newNode ->next = current->next;
+            current ->next = newNode;
             
-            int gcdValue = gcd(prev->val, current->val);
-            
-            ListNode* gcdNode = new ListNode(gcdValue);
-            prev->next = gcdNode;
-            gcdNode->next = current;
-            current = current->next;
-            prev = prev->next->next;
+            current  = current->next->next;
         }
-
-        // while(prev->next!=nullptr){
-        //     int val1=prev->val;
-        //     int val2=current->val;
-        //     int mini =  min(val1,val2);
-        //     int gcd = 0;
-        //     for(int i = mini;i>0;i--){
-        //         if(val1%i==0 && val2%i==0){
-        //             gcd = max(gcd,i);
-        //             break;
-        //         }
-
-        //     }
-        //     ListNode* gcdNode = new ListNode(gcd);
-        //     prev->next =  gcdNode;
-        //     gcdNode->next =  current;
-
-
-        //     current = current->next;
-        //     prev = prev->next->next;
-
-            
-
-        // }
         return head;
     }
 };
