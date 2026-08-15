@@ -11,21 +11,40 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        ListNode* dummy =  new ListNode(-1);
-        ListNode* tail = dummy;
-        while(list1!=nullptr && list2!=nullptr){
-            if(list1->val <= list2->val){
-                tail->next = list1;
-                list1 = list1->next;
-            }
-            else{
-                tail->next =  list2;
-                list2 =  list2->next;
 
-            }
-            tail = tail->next;
+        ListNode* dummy = new ListNode(-1);
+        ListNode* tail = dummy;
+
+        ListNode* ptr1 = list1;
+        ListNode* ptr2 = list2;
+
+        while(nullptr != ptr1 && nullptr != ptr2){
+           
+                if(ptr1 -> val <= ptr2 -> val ){
+                    tail->next =  ptr1;
+                    tail = tail ->next;
+                    ptr1 =  ptr1 -> next;
+                }
+
+                else if(ptr2 -> val < ptr1 -> val){
+                    tail -> next = ptr2;
+                    tail = tail ->next;
+                    ptr2 = ptr2 -> next;
+                }
+
         }
-        tail->next = (list1 != nullptr) ? list1 : list2;
-        return dummy->next;
+
+        while(ptr1 !=  nullptr){
+            tail -> next = ptr1;
+            tail = tail -> next;
+            ptr1 = ptr1-> next;
+        }
+        while(ptr2 != nullptr){
+            tail -> next = ptr2;
+            tail = tail -> next;
+            ptr2 = ptr2-> next;
+        }
+        return dummy -> next;
+        
     }
 };
