@@ -12,22 +12,15 @@ class Solution {
 public:
     int getDecimalValue(ListNode* head) {
 
-
-        ListNode* current = head;
         string s = "";
-        int result = 0;
+        ListNode* current = head;
 
-        while(current!=nullptr){
-            // s+= to_string(current->val);
-            result = result*2+current->val;
-
-            current = current -> next;
-
-
+        while(nullptr != current){
+            s+=to_string(current->val);
+            current = current->next;
         }
-
-        // result = stoi(s,nullptr,2);
-        return result;
+        int n = stoi(s , nullptr , 2);
+        return n;
         
     }
 };
