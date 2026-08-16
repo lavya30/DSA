@@ -9,31 +9,57 @@
  * };
  */
 class Solution {
-public:
-    ListNode* sortList(ListNode* head) {
-        ListNode* current = head;
-        vector<ListNode*>vec;
-        while(current!=nullptr){
-            vec.push_back(current);
-            current =  current->next;
-        }
-        sort(vec.begin(), vec.end(), [](ListNode* a, ListNode* b) {
-            return a->val < b->val;
-        });
+private:
+    ListNode* mergeList(ListNode* l1 ,  ListNode* l2){
         ListNode* dummy = new ListNode(-1);
         ListNode* tail = dummy;
-        for(int i = 0; i<vec.size();i++){
-            tail->next = vec[i];
-            tail = tail->next;
 
+        while(nullptr != l1 && nullptr !=l2){
+            if(l1->val <= l2->val){
+                tail->next = l1;
+                l1 = l1->next;
+                
+            }
+            else{
+                tail ->next = l2;
+                l2 =l2 ->next;
+               
+            }
+            tail = tail->next;
         }
-        tail->next = nullptr;
-        ListNode* newHead = dummy->next;
-        delete dummy; 
+        if(l1 != NULL)
+        {
+            tail -> next = l1;
+            l1 = l1->next;
+        }
         
-        return newHead;
-       
+        if(l2 != NULL)
+        {
+            tail -> next = l2;
+            l2 = l2 ->next;
+        }
+        return dummy->next;
+
         
+    }
+public:
+    ListNode* sortList(ListNode* head) {
+        if(nullptr == head || nullptr == head->next)
+            return head;
+        ListNode* temp = nullptr;
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while(nullptr != fast && nullptr != fast -> next){
+            temp = slow;
+            slow = slow -> next;
+            fast = fast->next->next;
+        }
+        temp -> next = nullptr;
+
+        ListNode* l1 =sortList(head);
+        ListNode* l2 =sortList(slow);
         
+        return mergeList(l1,l2);
     }
 };
