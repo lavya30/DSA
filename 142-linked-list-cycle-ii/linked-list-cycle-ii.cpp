@@ -11,44 +11,23 @@ public:
     ListNode *detectCycle(ListNode *head) {
 
         ListNode* fast = head;
-        ListNode* slow =  head;
+        ListNode* slow = head;
 
-        if(head == nullptr || head->next ==  nullptr)
-            return nullptr;
-
-        while(fast!=nullptr && fast->next!=nullptr){
-          
-          
+        while(nullptr != fast && nullptr != fast->next){
             slow = slow->next;
-      
             fast = fast->next->next;
 
-            if(fast == slow){
-               slow = head;
 
-               while(fast!=slow){
-                fast = fast->next;
-                slow = slow->next;
-               }
-               return slow;
+            if(slow == fast){
+                slow = head;
+                while(fast!=slow){
+                    slow = slow->next;
+                    fast = fast->next;
+                }
+                return slow;
             }
+
         }
-
-
-        // vector<ListNode*>vec;
-
-        // ListNode* current = head;
-
-        // while(current!=nullptr){
-        //     if(find(vec.begin(),vec.end(),current)!=vec.end()){
-        //         return current;
-        //     }
-        //     vec.push_back(current);
-            
-        //     current =  current->next;
-        // }
         return nullptr;
-
-        
     }
 };
