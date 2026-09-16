@@ -9,29 +9,44 @@
  * };
  */
 class Solution {
-public:
-    int pairSum(ListNode* head) {
-
-        vector<int>store;
-
+private:
+    ListNode* reverse(ListNode* head){
+        ListNode* prev = nullptr;
         ListNode* current = head;
 
-        while(nullptr != current ){
-            store.push_back(current -> val);
-
-            current = current -> next;
+        while(current != nullptr){
+            ListNode* nex = current->next;
+            current->next = prev;
+            prev = current;
+            current = nex;
         }
+
+        return prev;
+    }
+public:
+    int pairSum(ListNode* head) {
+        int count = 0;
+        ListNode* fast = head;
+        ListNode* slow = head;
+
+        while(nullptr != fast && nullptr != fast->next){
+            count++;
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+
+        ListNode* head2 = reverse(slow);
         int maxim = INT_MIN;
-        int low = 0;
-        int high = store.size()-1;
 
-        while(low<high){
-            maxim = max(maxim , store[low]+store[high]);
+        ListNode* p1 = head;
+        ListNode* p2 = head2;
 
-            low++;
-            high--;
+        for(int i = 0; i < count; i++){
+            maxim = max(maxim, p1->val + p2->val);
+            p1 = p1->next;
+            p2 = p2->next;
         }
+
         return maxim;
-        
     }
 };
