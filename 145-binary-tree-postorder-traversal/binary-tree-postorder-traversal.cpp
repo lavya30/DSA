@@ -10,19 +10,18 @@
  * };
  */
 class Solution {
-    void PostOrder(TreeNode* node ,  vector<int>&result){
-        if(node == nullptr) 
+private:
+    void postorder(TreeNode* root ,  vector<int>&ans){
+        if(nullptr == root)
             return;
-        PostOrder(node->left,result);
-        PostOrder(node->right,result);
-        result.push_back(node->val);
+        postorder(root->left , ans);
+        postorder(root->right , ans);
+        ans.push_back(root->val);
     }
 public:
     vector<int> postorderTraversal(TreeNode* root) {
-
-        vector<int>result;
-        PostOrder(root, result);
-        return result;
-        
+        vector<int>ans;
+        postorder(root,ans);
+        return ans;
     }
 };
