@@ -10,22 +10,25 @@
  * };
  */
 class Solution {
-private:
-    void inorder(TreeNode* root , int &sum){
-        if(nullptr == root)
-            return;
-        inorder(root->left, sum);
-        sum+=root->val;
-        inorder(root->right,sum);
+// private:
+//     void inorder(TreeNode* root , int &sum){
+//         if(nullptr == root)
+//             return;
+//         inorder(root->left, sum);
+//         sum+=root->val;
+//         inorder(root->right,sum);
 
-    }
+//     }
 public:
     bool checkTree(TreeNode* root) {
-        int root_sum = root->val;
 
-        int sum = 0;
-        inorder(root , sum);
-        return sum - root_sum == root_sum? true:false;
+        return root->val == root->left->val + root->right->val;
+
+        // int root_sum = root->val;
+
+        // int sum = 0;
+        // inorder(root , sum);
+        // return sum - root_sum == root_sum? true:false;
         
     }
 };
