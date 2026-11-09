@@ -6,8 +6,7 @@ var createCounter = function(n) {
     
     return function() {
 
-       var num = n++;
-       return num;
+        return n++;
         
     };
 };
