@@ -13,8 +13,6 @@ public:
             }
             else
                 inc = 1;
-        }
-        for(int i = 0;i<nums.size()-1;i++){
             if(nums[i+1] < nums[i]){
                 dec++;
                 maxi = max(maxi ,  dec);
@@ -22,6 +20,8 @@ public:
             else
                 dec = 1;
         }
+        
+                
         return maxi;
     }
 };
